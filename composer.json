@@ -35,7 +35,7 @@
     }
   },
   "scripts": {
-    "coverage-check": "coverage-check test/log/clover.xml 100",
+    "coverage-check": "coverage-check test/coverage/clover.xml 100",
     "phpcbf": "phpcbf -p --colors",
     "phpcs": "phpcs -p --colors",
     "phpstan": "phpstan analyse --no-interaction --ansi",
