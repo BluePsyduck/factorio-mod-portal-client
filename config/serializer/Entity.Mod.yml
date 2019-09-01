@@ -1,0 +1,55 @@
+BluePsyduck\FactorioModPortalClient\Entity\Mod:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    first:
+      category: string
+      serialized_name: category
+    changelog:
+      type: string
+      serialized_name: changelog
+    createdAt:
+      type: DateTimeImmutable
+      serialized_name: created_at
+    description:
+      type: string
+      serialized_name: description
+    downloadsCount:
+      type: integer
+      serialized_name: downloads_count
+    githubPath:
+      type: string
+      serialized_name: github_path
+    homepage:
+      type: string
+      serialized_name: homepage
+    latestRelease:
+      type: BluePsyduck\FactorioModPortalClient\Entity\Release
+      serialized_name: latest_release
+    license:
+      type: BluePsyduck\FactorioModPortalClient\Entity\License
+      serialized_name: license
+    name:
+      type: string
+      serialized_name: name
+    owner:
+      type: string
+      serialized_name: owner
+    releases:
+      type: BluePsyduck\FactorioModPortalClient\Entity\Release[]
+      serialized_name: releases
+    score:
+      type: float
+      serialized_name: score
+    summary:
+      type: string
+      serialized_name: summary
+    thumbnail:
+      type: string
+      serialized_name: thumbnail
+    title:
+      type: string
+      serialized_name: title
+    updatedAt:
+      type: DateTimeImmutable
+      serialized_name: updated_at

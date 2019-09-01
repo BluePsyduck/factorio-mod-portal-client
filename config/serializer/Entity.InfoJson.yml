@@ -1,0 +1,10 @@
+BluePsyduck\FactorioModPortalClient\Entity\InfoJson:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    dependencies:
+      type: string[]
+      serialized_name: dependencies
+    factorioVersion:
+      type: string
+      serialized_name: factorio_version

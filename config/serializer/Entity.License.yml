@@ -1,0 +1,10 @@
+BluePsyduck\FactorioModPortalClient\Entity\License:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    name:
+      type: string
+      serialized_name: name
+    url:
+      type: string
+      serialized_name: url

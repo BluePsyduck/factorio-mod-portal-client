@@ -1,0 +1,16 @@
+BluePsyduck\FactorioModPortalClient\Entity\Links:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    first:
+      type: string
+      serialized_name: first
+    prev:
+      type: string
+      serialized_name: prev
+    next:
+      type: string
+      serialized_name: next
+    last:
+      type: string
+      serialized_name: last

@@ -1,0 +1,10 @@
+BluePsyduck\FactorioModPortalClient\Entity\InfoJson:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    pagination:
+      type: BluePsyduck\FactorioModPortalClient\Entity\Pagination
+      serialized_name: pagination
+    results:
+      type: BluePsyduck\FactorioModPortalClient\Entity\Mod[]
+      serialized_name: results

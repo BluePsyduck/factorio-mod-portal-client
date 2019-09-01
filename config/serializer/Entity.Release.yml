@@ -1,0 +1,22 @@
+BluePsyduck\FactorioModPortalClient\Entity\Release:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    downloadUrl:
+      type: string
+      serialized_name: download_url
+    fileName:
+      type: string
+      serialized_name: file_name
+    infoJson:
+      type: BluePsyduck\FactorioModPortalClient\Entity\InfoJson
+      serialized_name: info_json
+    releasedAt:
+      type: DateTimeImmutable
+      serialized_name: released_at
+    version:
+      type: string
+      serialized_name: version
+    sha1:
+      type: string
+      serialized_name: sha1

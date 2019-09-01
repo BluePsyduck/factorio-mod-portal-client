@@ -1,0 +1,19 @@
+BluePsyduck\FactorioModPortalClient\Entity\Pagination:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    count:
+      type: integer
+      serialized_name: count
+    page:
+      type: integer
+      serialized_name: page
+    pageCount:
+      type: integer
+      serialized_name: page_count
+    pageSize:
+      type: integer
+      serialized_name: page_size
+    links:
+      type: BluePsyduck\FactorioModPortalClient\Entity\Links
+      serialized_name: links

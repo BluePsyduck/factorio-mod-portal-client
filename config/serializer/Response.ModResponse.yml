@@ -1,0 +1,3 @@
+BluePsyduck\FactorioModPortalClient\Response\ModResponse:
+  access_type: public_method
+  exclusion_policy: all
