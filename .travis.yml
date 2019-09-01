@@ -15,6 +15,7 @@ install:
 
 script:
   - vendor/bin/phpunit --testsuite=unit-test --coverage-clover=coverage.xml
+  - vendor/bin/phpunit --testsuite=serialize-test
   - vendor/bin/coverage-check coverage.xml 100
   - vendor/bin/phpcs -np --colors
   - vendor/bin/phpstan analyse --no-interaction

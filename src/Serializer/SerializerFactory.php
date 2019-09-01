@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace BluePsyduck\FactorioModPortalClient\Serializer;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
+use BluePsyduck\FactorioModPortalClient\Serializer\Construction\ObjectConstructor;
+use BluePsyduck\FactorioModPortalClient\Serializer\Handler\SimpleDateTimeHandler;
 use Interop\Container\ContainerInterface;
+use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -32,7 +35,12 @@ class SerializerFactory implements FactoryInterface
             ->addMetadataDir(
                 (string) realpath(__DIR__ . '/../../config/serializer'),
                 'BluePsyduck\FactorioModPortalClient'
-            );
+            )
+            ->addDefaultHandlers()
+            ->configureHandlers(function (HandlerRegistry $registry): void {
+                $registry->registerSubscribingHandler(new SimpleDateTimeHandler());
+            })
+            ->setObjectConstructor(new ObjectConstructor());
 
         $this->addCacheDirectory($container, $builder);
 

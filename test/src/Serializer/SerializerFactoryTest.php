@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace BluePsyduckTest\FactorioModPortalClient\Serializer;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
+use BluePsyduck\FactorioModPortalClient\Serializer\Construction\ObjectConstructor;
+use BluePsyduck\FactorioModPortalClient\Serializer\Handler\SimpleDateTimeHandler;
 use BluePsyduck\FactorioModPortalClient\Serializer\SerializerFactory;
 use BluePsyduck\TestHelper\ReflectionTrait;
 use Interop\Container\ContainerInterface;
+use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -32,10 +35,16 @@ class SerializerFactoryTest extends TestCase
     public function testInvoke(): void
     {
         $builder = SerializerBuilder::create();
-        $builder->addMetadataDir(
-                    (string) realpath(__DIR__ . '/../../../config/serializer'),
-                    'BluePsyduck\FactorioModPortalClient'
-                );
+        $builder
+            ->addMetadataDir(
+                (string) realpath(__DIR__ . '/../../../config/serializer'),
+                'BluePsyduck\FactorioModPortalClient'
+            )
+            ->addDefaultHandlers()
+            ->configureHandlers(function (HandlerRegistry $registry): void {
+                $registry->registerSubscribingHandler(new SimpleDateTimeHandler());
+            })
+            ->setObjectConstructor(new ObjectConstructor());
 
         $expectedResult = $builder->build();
 

@@ -2,14 +2,14 @@ BluePsyduck\FactorioModPortalClient\Entity\Mod:
   access_type: public_method
   exclusion_policy: all
   properties:
-    first:
-      category: string
+    category:
+      type: string
       serialized_name: category
     changelog:
       type: string
       serialized_name: changelog
     createdAt:
-      type: DateTimeImmutable
+      type: simpleDateTime
       serialized_name: created_at
     description:
       type: string
@@ -36,7 +36,7 @@ BluePsyduck\FactorioModPortalClient\Entity\Mod:
       type: string
       serialized_name: owner
     releases:
-      type: BluePsyduck\FactorioModPortalClient\Entity\Release[]
+      type: array<BluePsyduck\FactorioModPortalClient\Entity\Release>
       serialized_name: releases
     score:
       type: float
@@ -51,5 +51,5 @@ BluePsyduck\FactorioModPortalClient\Entity\Mod:
       type: string
       serialized_name: title
     updatedAt:
-      type: DateTimeImmutable
+      type: simpleDateTime
       serialized_name: updated_at

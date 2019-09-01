@@ -12,7 +12,7 @@ BluePsyduck\FactorioModPortalClient\Entity\Release:
       type: BluePsyduck\FactorioModPortalClient\Entity\InfoJson
       serialized_name: info_json
     releasedAt:
-      type: DateTimeImmutable
+      type: simpleDateTime
       serialized_name: released_at
     version:
       type: string

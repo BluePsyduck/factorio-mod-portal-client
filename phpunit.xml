@@ -4,6 +4,9 @@
         <testsuite name="unit-test">
             <directory>test/src</directory>
         </testsuite>
+        <testsuite name="serializer-test">
+            <directory>test/serializer</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist>
