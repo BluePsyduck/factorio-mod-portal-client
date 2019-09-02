@@ -39,6 +39,11 @@
       "BluePsyduckTestSerializer\\FactorioModPortalClient\\": "test/serializer/"
     }
   },
+  "extra": {
+    "zf": {
+      "config-provider": "BluePsyduck\\FactorioModPortalClient\\ConfigProvider"
+    }
+  },
   "scripts": {
     "coverage-check": "coverage-check test/coverage/clover.xml 100",
     "phpcbf": "phpcbf -p --colors",
