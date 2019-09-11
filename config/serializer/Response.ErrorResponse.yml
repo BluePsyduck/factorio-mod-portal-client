@@ -1,0 +1,7 @@
+BluePsyduck\FactorioModPortalClient\Response\ErrorResponse:
+  access_type: public_method
+  exclusion_policy: all
+  properties:
+    message:
+      type: string
+      serialized_name: message
