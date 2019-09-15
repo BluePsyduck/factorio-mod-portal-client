@@ -18,6 +18,8 @@ return [
     'dependencies' => [
         'factories'  => [
             Client\Options::class => Client\OptionsFactory::class,
+            Client\ClientInterface::class => Client\ClientFactory::class,
+            Client\Facade::class => Client\FacadeFactory::class,
 
             Endpoint\FullModRequestEndpoint::class => InvokableFactory::class,
             Endpoint\ModListRequestEndpoint::class => InvokableFactory::class,
