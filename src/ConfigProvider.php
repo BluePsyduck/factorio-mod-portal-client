@@ -19,8 +19,8 @@ class ConfigProvider
     public function __invoke(): array
     {
         return array_merge(
-            require(__DIR__ . '/../config/api-client.php'),
-            require(__DIR__ . '/../config/dependencies.php')
+            require(__DIR__ . '/../config/dependencies.php'),
+            require(__DIR__ . '/../config/factorio-mod-portal-client.php')
         );
     }
 }

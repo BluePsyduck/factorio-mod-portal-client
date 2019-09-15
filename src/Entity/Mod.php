@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BluePsyduck\FactorioModPortalClient\Entity;
 
-use DateTimeImmutable;
 use DateTimeInterface;
 
 /**
@@ -29,7 +28,7 @@ class Mod
 
     /**
      * The timestamp when the mod was first created.
-     * @var DateTimeInterface
+     * @var DateTimeInterface|null
      */
     protected $createdAt;
 
@@ -113,7 +112,7 @@ class Mod
 
     /**
      * The timestamp of when the mod was last updated.
-     * @var DateTimeInterface
+     * @var DateTimeInterface|null
      */
     protected $updatedAt;
 
@@ -122,9 +121,7 @@ class Mod
      */
     public function __construct()
     {
-        $this->createdAt = new DateTimeImmutable();
         $this->license = new License();
-        $this->updatedAt = new DateTimeImmutable();
     }
 
     /**
@@ -169,10 +166,10 @@ class Mod
 
     /**
      * Sets the timestamp when the mod was first created.
-     * @param DateTimeInterface $createdAt
+     * @param DateTimeInterface|null $createdAt
      * @return $this
      */
-    public function setCreatedAt(DateTimeInterface $createdAt): self
+    public function setCreatedAt(?DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -180,9 +177,9 @@ class Mod
 
     /**
      * Returns the timestamp when the mod was first created.
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
-    public function getCreatedAt(): DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -449,10 +446,10 @@ class Mod
 
     /**
      * Sets the timestamp of when the mod was last updated.
-     * @param DateTimeInterface $updatedAt
+     * @param DateTimeInterface|null $updatedAt
      * @return $this
      */
-    public function setUpdatedAt(DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
         return $this;
@@ -460,9 +457,9 @@ class Mod
 
     /**
      * Returns the timestamp of when the mod was last updated.
-     * @return DateTimeInterface
+     * @return DateTimeInterface|null
      */
-    public function getUpdatedAt(): DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }

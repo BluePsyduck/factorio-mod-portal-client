@@ -29,6 +29,7 @@ class ModTest extends TestCase
 
         $this->assertSame('', $entity->getCategory());
         $this->assertSame('', $entity->getChangelog());
+        $this->assertNull($entity->getCreatedAt());
         $this->assertSame('', $entity->getDescription());
         $this->assertSame(0, $entity->getDownloadsCount());
         $this->assertSame('', $entity->getGithubPath());
@@ -41,11 +42,10 @@ class ModTest extends TestCase
         $this->assertSame('', $entity->getSummary());
         $this->assertSame('', $entity->getThumbnail());
         $this->assertSame('', $entity->getTitle());
+        $this->assertNull($entity->getUpdatedAt());
 
         // Asserted through type-hinting
-        $entity->getCreatedAt();
         $entity->getLicense();
-        $entity->getUpdatedAt();
     }
 
     /**
