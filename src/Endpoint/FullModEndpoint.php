@@ -14,7 +14,7 @@ use BluePsyduck\FactorioModPortalClient\Response\ModResponse;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  */
-class FullModRequestEndpoint implements EndpointInterface
+class FullModEndpoint implements EndpointInterface
 {
     /**
      * Returns the request class supported by the endpoint.

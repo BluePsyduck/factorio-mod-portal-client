@@ -223,7 +223,7 @@ class ClientTest extends TestCase
     public function testCreateClientRequest(): void
     {
         $requestPath = '/abc';
-        $expectedResult = new Request('GET', '/abc');
+        $expectedResult = new Request('GET', 'abc');
 
         /* @var RequestInterface&MockObject $request */
         $request = $this->createMock(RequestInterface::class);

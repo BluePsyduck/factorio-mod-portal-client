@@ -21,9 +21,9 @@ return [
             Client\ClientInterface::class => Client\ClientFactory::class,
             Client\Facade::class => Client\FacadeFactory::class,
 
-            Endpoint\FullModRequestEndpoint::class => InvokableFactory::class,
-            Endpoint\ModListRequestEndpoint::class => InvokableFactory::class,
-            Endpoint\ModRequestEndpoint::class => InvokableFactory::class,
+            Endpoint\FullModEndpoint::class => InvokableFactory::class,
+            Endpoint\ModListEndpoint::class => InvokableFactory::class,
+            Endpoint\ModEndpoint::class => InvokableFactory::class,
 
             Service\EndpointService::class => Service\EndpointServiceFactory::class,
 

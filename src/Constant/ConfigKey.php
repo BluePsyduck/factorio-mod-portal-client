@@ -15,7 +15,7 @@ interface ConfigKey
     /**
      * The main key holding the library configuration.
      */
-    public const MAIN = 'factorio-item-browser';
+    public const MAIN = 'factorio-mod-portal-client';
 
     /**
      * The key holding the cache directory to use.

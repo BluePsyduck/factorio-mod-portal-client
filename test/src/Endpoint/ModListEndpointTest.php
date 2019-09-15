@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace BluePsyduckTest\FactorioModPortalClient\Endpoint;
 
-use BluePsyduck\FactorioModPortalClient\Endpoint\ModListRequestEndpoint;
+use BluePsyduck\FactorioModPortalClient\Endpoint\ModListEndpoint;
 use BluePsyduck\FactorioModPortalClient\Request\ModListRequest;
 use BluePsyduck\FactorioModPortalClient\Response\ModListResponse;
 use PHPUnit\Framework\TestCase;
 
 /**
- * The PHPUnit test of the ModListRequestEndpoint class.
+ * The PHPUnit test of the ModListEndpoint class.
  *
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
- * @coversDefaultClass \BluePsyduck\FactorioModPortalClient\Endpoint\ModListRequestEndpoint
+ * @coversDefaultClass \BluePsyduck\FactorioModPortalClient\Endpoint\ModListEndpoint
  */
-class ModListRequestEndpointTest extends TestCase
+class ModListEndpointTest extends TestCase
 {
 /**
      * Tests the getSupportedRequestClass method.
@@ -26,7 +26,7 @@ class ModListRequestEndpointTest extends TestCase
     {
         $expectedResult = ModListRequest::class;
 
-        $endpoint = new ModListRequestEndpoint();
+        $endpoint = new ModListEndpoint();
         $result = $endpoint->getSupportedRequestClass();
 
         $this->assertSame($expectedResult, $result);
@@ -44,7 +44,7 @@ class ModListRequestEndpointTest extends TestCase
                 ->setNameList(['abc', 'def']);
         $expectedResult = '/mods?page=42&page_size=21&namelist=abc%2Cdef';
 
-        $endpoint = new ModListRequestEndpoint();
+        $endpoint = new ModListEndpoint();
         $result = $endpoint->getRequestPath($request);
 
         $this->assertSame($expectedResult, $result);
@@ -59,7 +59,7 @@ class ModListRequestEndpointTest extends TestCase
         $request = new ModListRequest();
         $expectedResult = '/mods?';
 
-        $endpoint = new ModListRequestEndpoint();
+        $endpoint = new ModListEndpoint();
         $result = $endpoint->getRequestPath($request);
 
         $this->assertSame($expectedResult, $result);
@@ -73,7 +73,7 @@ class ModListRequestEndpointTest extends TestCase
     {
         $expectedResult = ModListResponse::class;
 
-        $endpoint = new ModListRequestEndpoint();
+        $endpoint = new ModListEndpoint();
         $result = $endpoint->getResponseClass();
 
         $this->assertSame($expectedResult, $result);

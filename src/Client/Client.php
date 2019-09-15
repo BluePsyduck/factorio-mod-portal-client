@@ -114,7 +114,7 @@ class Client implements ClientInterface
     protected function createClientRequest(RequestInterface $request): PsrRequestInterface
     {
         $endpoint = $this->endpointService->getEndpointForRequest($request);
-        return new Request('GET', $endpoint->getRequestPath($request));
+        return new Request('GET', ltrim($endpoint->getRequestPath($request), '/'));
     }
 
     /**

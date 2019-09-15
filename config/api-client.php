@@ -16,9 +16,9 @@ use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
 return [
     ConfigKey::MAIN => [
         ConfigKey::ENDPOINTS => [
-            Endpoint\FullModRequestEndpoint::class,
-            Endpoint\ModListRequestEndpoint::class,
-            Endpoint\ModRequestEndpoint::class,
+            Endpoint\FullModEndpoint::class,
+            Endpoint\ModListEndpoint::class,
+            Endpoint\ModEndpoint::class,
         ],
     ],
 ];
