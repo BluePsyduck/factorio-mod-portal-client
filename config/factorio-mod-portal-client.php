@@ -24,7 +24,7 @@ return [
             // The template to use for the download URLs for mods.
             ConfigKey::OPTION_DOWNLOAD_URL_TEMPLATE => 'https://mods.factorio.com%s',
             // The template to use for the asset URLs for e.g. mod thumbnails.
-            ConfigKey::OPTION_ASSET_URL_TEMPLATE => 'https://mod-data.factorio.com%s',
+            ConfigKey::OPTION_ASSET_URL_TEMPLATE => 'https://mods-data.factorio.com%s',
             // The username to use for the download links to avoid the login screen.
             ConfigKey::OPTION_USERNAME => '',
             // The token for the username, retrievable from the Factorio page.
