@@ -43,6 +43,16 @@ interface ConfigKey
     public const OPTION_TIMEOUT = 'timeout';
 
     /**
+     * The key holding the template for the download URLs.
+     */
+    public const OPTION_DOWNLOAD_URL_TEMPLATE = 'download-url-template';
+
+    /**
+     * The key holding the template for the asset URLs.
+     */
+    public const OPTION_ASSET_URL_TEMPLATE = 'asset-url-template';
+
+    /**
      * The key for the username option.
      */
     public const OPTION_USERNAME = 'username';

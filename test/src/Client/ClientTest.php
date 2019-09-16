@@ -123,7 +123,8 @@ class ClientTest extends TestCase
      */
     public function testCreateGuzzleClient(): void
     {
-        $apiUrl = 'https://www.example.com/';
+        $apiUrl = 'https://www.example.com';
+        $expectedApiUrl = 'https://www.example.com/';
         $timeout = 42;
 
         /* @var Options&MockObject $options */
@@ -140,7 +141,7 @@ class ClientTest extends TestCase
         /* @var GuzzleClient $result */
         $result = $this->invokeMethod($client, 'createGuzzleClient', $options);
 
-        $this->assertSame($apiUrl, (string) $result->getConfig('base_uri'));
+        $this->assertSame($expectedApiUrl, (string) $result->getConfig('base_uri'));
         $this->assertSame($timeout, $result->getConfig('timeout'));
     }
 
@@ -600,6 +601,80 @@ class ClientTest extends TestCase
 
         $client = $this->createMockedClient([]);
         $result = $this->invokeMethod($client, 'getContentsFromMessage', $message);
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    /**
+     * Tests the getDownloadUrl method.
+     * @covers ::getDownloadUrl
+     */
+    public function testGetDownloadUrl(): void
+    {
+        $downloadPath = 'foo';
+        $downloadUrlTemplate = 'abc/%s/def';
+        $username = 'ghi';
+        $token = 'jkl';
+        $expectedResult = 'abc/foo/def?username=ghi&token=jkl';
+
+        $this->options->expects($this->any())
+                      ->method('getUsername')
+                      ->willReturn($username);
+        $this->options->expects($this->any())
+                      ->method('getToken')
+                      ->willReturn($token);
+        $this->options->expects($this->any())
+                      ->method('getDownloadUrlTemplate')
+                      ->willReturn($downloadUrlTemplate);
+
+        $client = $this->createMockedClient([]);
+        $result = $client->getDownloadUrl($downloadPath);
+
+        $this->assertSame($expectedResult, $result);
+    }
+    
+    /**
+     * Tests the getDownloadUrl method.
+     * @covers ::getDownloadUrl
+     */
+    public function testGetDownloadUrlWithoutLogin(): void
+    {
+        $downloadPath = 'foo';
+        $downloadUrlTemplate = 'abc/%s/def';
+        $expectedResult = 'abc/foo/def';
+
+        $this->options->expects($this->any())
+                      ->method('getUsername')
+                      ->willReturn('');
+        $this->options->expects($this->any())
+                      ->method('getToken')
+                      ->willReturn('');
+        $this->options->expects($this->any())
+                      ->method('getDownloadUrlTemplate')
+                      ->willReturn($downloadUrlTemplate);
+
+        $client = $this->createMockedClient([]);
+        $result = $client->getDownloadUrl($downloadPath);
+
+        $this->assertSame($expectedResult, $result);
+    }
+    
+    /**
+     * Tests the getAssetUrl method.
+     * @covers ::getAssetUrl
+     */
+    public function testGetAssetUrl(): void
+    {
+        $assetPath = 'foo';
+        $assetUrlTemplate = 'abc/%s/def';
+        $expectedResult = 'abc/foo/def';
+
+        $this->options->expects($this->once())
+                      ->method('getAssetUrlTemplate')
+                      ->willReturn($assetUrlTemplate);
+
+        $client = $this->createMockedClient([]);
+        $result = $client->getAssetUrl($assetPath);
 
         $this->assertSame($expectedResult, $result);
     }

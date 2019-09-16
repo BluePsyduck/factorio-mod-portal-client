@@ -26,6 +26,8 @@ class OptionsTest extends TestCase
 
         $this->assertSame('', $options->getApiUrl());
         $this->assertSame(0, $options->getTimeout());
+        $this->assertSame('', $options->getDownloadUrlTemplate());
+        $this->assertSame('', $options->getAssetUrlTemplate());
         $this->assertSame('', $options->getUsername());
         $this->assertSame('', $options->getToken());
     }
@@ -56,6 +58,34 @@ class OptionsTest extends TestCase
 
         $this->assertSame($options, $options->setTimeout($timeout));
         $this->assertSame($timeout, $options->getTimeout());
+    }
+
+    /**
+     * Tests the setting and getting the download url template.
+     * @covers ::getDownloadUrlTemplate
+     * @covers ::setDownloadUrlTemplate
+     */
+    public function testSetAndGetDownloadUrlTemplate(): void
+    {
+        $downloadUrlTemplate = 'abc';
+        $options = new Options();
+
+        $this->assertSame($options, $options->setDownloadUrlTemplate($downloadUrlTemplate));
+        $this->assertSame($downloadUrlTemplate, $options->getDownloadUrlTemplate());
+    }
+
+    /**
+     * Tests the setting and getting the asset url template.
+     * @covers ::getAssetUrlTemplate
+     * @covers ::setAssetUrlTemplate
+     */
+    public function testSetAndGetAssetUrlTemplate(): void
+    {
+        $assetUrlTemplate = 'abc';
+        $options = new Options();
+
+        $this->assertSame($options, $options->setAssetUrlTemplate($assetUrlTemplate));
+        $this->assertSame($assetUrlTemplate, $options->getAssetUrlTemplate());
     }
 
     /**

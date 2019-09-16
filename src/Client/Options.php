@@ -25,6 +25,18 @@ class Options
     protected $timeout = 0;
 
     /**
+     * The template for the download links of a mod.
+     * @var string
+     */
+    protected $downloadUrlTemplate = '';
+
+    /**
+     * The template for the asset links for e.g. the thumbnails.
+     * @var string
+     */
+    protected $assetUrlTemplate = '';
+
+    /**
      * The username to use when generating the full download links of mods.
      * @var string
      */
@@ -74,6 +86,46 @@ class Options
     public function getTimeout(): int
     {
         return $this->timeout;
+    }
+
+    /**
+     * Sets the template for the download links of a mod.
+     * @param string $downloadUrlTemplate
+     * @return $this
+     */
+    public function setDownloadUrlTemplate(string $downloadUrlTemplate): self
+    {
+        $this->downloadUrlTemplate = $downloadUrlTemplate;
+        return $this;
+    }
+
+    /**
+     * Returns the template for the download links of a mod.
+     * @return string
+     */
+    public function getDownloadUrlTemplate(): string
+    {
+        return $this->downloadUrlTemplate;
+    }
+
+    /**
+     * Sets the template for the asset links for e.g. the thumbnails.
+     * @param string $assetUrlTemplate
+     * @return $this
+     */
+    public function setAssetUrlTemplate(string $assetUrlTemplate): self
+    {
+        $this->assetUrlTemplate = $assetUrlTemplate;
+        return $this;
+    }
+
+    /**
+     * Returns the template for the asset links for e.g. the thumbnails.
+     * @return string
+     */
+    public function getAssetUrlTemplate(): string
+    {
+        return $this->assetUrlTemplate;
     }
 
     /**

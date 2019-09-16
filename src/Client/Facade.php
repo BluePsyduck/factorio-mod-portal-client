@@ -65,4 +65,24 @@ class Facade
     {
         return $this->client->sendRequest($request)->wait();
     }
+
+    /**
+     * Returns the full download URL to a mod release.
+     * @param string $downloadPath
+     * @return string
+     */
+    public function getDownloadUrl(string $downloadPath): string
+    {
+        return $this->client->getDownloadUrl($downloadPath);
+    }
+
+    /**
+     * Returns the full asset URL to e.g. a thumbnail.
+     * @param string $assetPath
+     * @return string
+     */
+    public function getAssetUrl(string $assetPath): string
+    {
+        return $this->client->getAssetUrl($assetPath);
+    }
 }

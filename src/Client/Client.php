@@ -81,7 +81,7 @@ class Client implements ClientInterface
     protected function createGuzzleClient(Options $options): GuzzleClient
     {
         return new GuzzleClient([
-            'base_uri' => $options->getApiUrl(),
+            'base_uri' => rtrim($options->getApiUrl(), '/') . '/',
             'timeout' => $options->getTimeout(),
         ]);
     }
@@ -215,5 +215,32 @@ class Client implements ClientInterface
             $result = $message->getBody()->getContents();
         }
         return $result;
+    }
+
+    /**
+     * Returns the full download URL to a mod release.
+     * @param string $downloadPath
+     * @return string
+     */
+    public function getDownloadUrl(string $downloadPath): string
+    {
+        $result = sprintf($this->options->getDownloadUrlTemplate(), $downloadPath);
+        if ($this->options->getUsername() !== '' && $this->options->getToken() !== '') {
+            $result .= '?' . http_build_query([
+                'username' => $this->options->getUsername(),
+                'token' => $this->options->getToken(),
+            ]);
+        }
+        return $result;
+    }
+
+    /**
+     * Returns the full asset URL to e.g. a thumbnail.
+     * @param string $assetPath
+     * @return string
+     */
+    public function getAssetUrl(string $assetPath): string
+    {
+        return sprintf($this->options->getAssetUrlTemplate(), $assetPath);
     }
 }

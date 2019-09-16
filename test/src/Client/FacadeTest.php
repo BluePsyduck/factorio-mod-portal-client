@@ -143,4 +143,44 @@ class FacadeTest extends TestCase
 
         $this->assertSame($response, $result);
     }
+
+    /**
+     * Tests the getDownloadUrl method.
+     * @covers ::getDownloadUrl
+     */
+    public function testGetDownloadUrl(): void
+    {
+        $downloadPath = 'abc';
+        $downloadUrl = 'def';
+
+        $this->client->expects($this->once())
+                     ->method('getDownloadUrl')
+                     ->with($this->identicalTo($downloadPath))
+                     ->willReturn($downloadUrl);
+
+        $facade = new Facade($this->client);
+        $result = $facade->getDownloadUrl($downloadPath);
+        
+        $this->assertSame($downloadUrl, $result);
+    }
+    
+    /**
+     * Tests the getAssetUrl method.
+     * @covers ::getAssetUrl
+     */
+    public function testGetAssetUrl(): void
+    {
+        $assetPath = 'abc';
+        $assetUrl = 'def';
+
+        $this->client->expects($this->once())
+                     ->method('getAssetUrl')
+                     ->with($this->identicalTo($assetPath))
+                     ->willReturn($assetUrl);
+
+        $facade = new Facade($this->client);
+        $result = $facade->getAssetUrl($assetPath);
+        
+        $this->assertSame($assetUrl, $result);
+    }
 }

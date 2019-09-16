@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BluePsyduckTestSerializer\FactorioModPortalClient\Response;
 
+use BluePsyduck\FactorioModPortalClient\Entity\License;
 use BluePsyduck\FactorioModPortalClient\Entity\Release;
 use BluePsyduck\FactorioModPortalClient\Response\ModResponse;
 use BluePsyduckTestAsset\FactorioModPortalClient\SerializerTestCase;
@@ -66,6 +67,8 @@ class ModResponseTest extends SerializerTestCase
         $release3 = new Release();
         $release3->setVersion('1.2.3')
                  ->setReleasedAt(new DateTimeImmutable('2039-01-18T03:14:07.123456Z'));
+        $license = new License();
+        $license->setName('pqr');
 
         $expectedObject = new ModResponse();
         $expectedObject->setCategory('abc')
@@ -84,7 +87,7 @@ class ModResponseTest extends SerializerTestCase
                        ->setThumbnail('bcd')
                        ->setTitle('efg')
                        ->setUpdatedAt(new DateTimeImmutable('2039-01-19T03:14:07.123456Z'));
-        $expectedObject->getLicense()->setName('pqr');
+        $expectedObject->setLicense($license);
 
         $this->assertDeserializedObject($data, $expectedObject);
     }

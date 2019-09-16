@@ -64,7 +64,7 @@ class Mod
 
     /**
      * The license of the mod.
-     * @var License
+     * @var License|null
      */
     protected $license;
 
@@ -115,14 +115,6 @@ class Mod
      * @var DateTimeInterface|null
      */
     protected $updatedAt;
-
-    /**
-     * Initializes the entity.
-     */
-    public function __construct()
-    {
-        $this->license = new License();
-    }
 
     /**
      * Sets the category of the mod.
@@ -286,10 +278,10 @@ class Mod
 
     /**
      * Sets the license of the mod.
-     * @param License $license
+     * @param License|null $license
      * @return $this
      */
-    public function setLicense(License $license): self
+    public function setLicense(?License $license): self
     {
         $this->license = $license;
         return $this;
@@ -297,9 +289,9 @@ class Mod
 
     /**
      * Returns the license of the mod.
-     * @return License
+     * @return License|null
      */
-    public function getLicense(): License
+    public function getLicense(): ?License
     {
         return $this->license;
     }

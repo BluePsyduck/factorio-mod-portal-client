@@ -21,7 +21,7 @@ class ModTest extends TestCase
 {
     /**
      * Tests the constructing.
-     * @covers ::__construct
+     * @coversNothing
      */
     public function testConstruct(): void
     {
@@ -35,6 +35,7 @@ class ModTest extends TestCase
         $this->assertSame('', $entity->getGithubPath());
         $this->assertSame('', $entity->getHomepage());
         $this->assertNull($entity->getLatestRelease());
+        $this->assertNull($entity->getLicense());
         $this->assertSame('', $entity->getName());
         $this->assertSame('', $entity->getOwner());
         $this->assertSame([], $entity->getReleases());
@@ -43,9 +44,6 @@ class ModTest extends TestCase
         $this->assertSame('', $entity->getThumbnail());
         $this->assertSame('', $entity->getTitle());
         $this->assertNull($entity->getUpdatedAt());
-
-        // Asserted through type-hinting
-        $entity->getLicense();
     }
 
     /**

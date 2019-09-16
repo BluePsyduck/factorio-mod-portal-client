@@ -31,6 +31,8 @@ class OptionsFactory implements FactoryInterface
         $result = new Options();
         $result->setApiUrl($optionsConfig[ConfigKey::OPTION_API_URL] ?? '')
                ->setTimeout($optionsConfig[ConfigKey::OPTION_TIMEOUT] ?? 0)
+               ->setDownloadUrlTemplate($optionsConfig[ConfigKey::OPTION_DOWNLOAD_URL_TEMPLATE] ?? '')
+               ->setAssetUrlTemplate($optionsConfig[ConfigKey::OPTION_ASSET_URL_TEMPLATE] ?? '')
                ->setUsername($optionsConfig[ConfigKey::OPTION_USERNAME] ?? '')
                ->setToken($optionsConfig[ConfigKey::OPTION_TOKEN] ?? '');
 
