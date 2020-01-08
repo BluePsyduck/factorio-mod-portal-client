@@ -21,7 +21,7 @@ class SimpleDateTimeHandler implements SubscribingHandlerInterface
 {
     /**
      * Returns the methods to subscribe to.
-     * @return array
+     * @return array<mixed>
      */
     public static function getSubscribingMethods()
     {
@@ -39,7 +39,7 @@ class SimpleDateTimeHandler implements SubscribingHandlerInterface
      * Deserializes the datetime, using its constructor.
      * @param DeserializationVisitorInterface $visitor
      * @param mixed $data
-     * @param array $type
+     * @param array|string[] $type
      * @return DateTimeInterface|null
      * @throws Exception
      */

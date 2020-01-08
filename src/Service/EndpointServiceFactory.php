@@ -6,8 +6,7 @@ namespace BluePsyduck\FactorioModPortalClient\Service;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
 use BluePsyduck\FactorioModPortalClient\Endpoint\EndpointInterface;
-use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * The factory of the endpoint service.
@@ -15,13 +14,13 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  */
-class EndpointServiceFactory implements FactoryInterface
+class EndpointServiceFactory
 {
     /**
      * Creates the service.
      * @param  ContainerInterface $container
      * @param  string $requestedName
-     * @param  null|array $options
+     * @param  array<mixed>|null $options
      * @return EndpointService
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): EndpointService

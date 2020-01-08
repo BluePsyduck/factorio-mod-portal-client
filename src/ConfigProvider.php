@@ -14,7 +14,7 @@ class ConfigProvider
 {
     /**
      * Returns the configuration of the library.
-     * @return array
+     * @return array<mixed>
      */
     public function __invoke(): array
     {

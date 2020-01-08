@@ -9,10 +9,10 @@ use BluePsyduck\FactorioModPortalClient\Client\ClientFactory;
 use BluePsyduck\FactorioModPortalClient\Client\Options;
 use BluePsyduck\FactorioModPortalClient\Constant\ServiceName;
 use BluePsyduck\FactorioModPortalClient\Service\EndpointService;
-use Interop\Container\ContainerInterface;
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 /**
  * The PHPUnit test of the ClientFactory class.
