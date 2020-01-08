@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace BluePsyduck\FactorioModPortalClient\Client;
 
-use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * The factory of the facade.
@@ -13,7 +12,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  */
-class FacadeFactory implements FactoryInterface
+class FacadeFactory
 {
     /**
      * Creates the client.

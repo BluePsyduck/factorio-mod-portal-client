@@ -16,8 +16,8 @@
     "ext-json": "*",
     "guzzlehttp/guzzle": "^6.3",
     "jms/serializer": "^3.2",
-    "symfony/yaml": "^4.2",
-    "zendframework/zend-servicemanager": "^3.0"
+    "psr/container": "^1.0",
+    "symfony/yaml": "^4.2"
   },
   "require-dev": {
     "bluepsyduck/test-helper": "^1.0",
@@ -38,11 +38,6 @@
       "BluePsyduckTest\\FactorioModPortalClient\\": "test/src/",
       "BluePsyduckTestAsset\\FactorioModPortalClient\\": "test/asset/",
       "BluePsyduckTestSerializer\\FactorioModPortalClient\\": "test/serializer/"
-    }
-  },
-  "extra": {
-    "zf": {
-      "config-provider": "BluePsyduck\\FactorioModPortalClient\\ConfigProvider"
     }
   },
   "scripts": {

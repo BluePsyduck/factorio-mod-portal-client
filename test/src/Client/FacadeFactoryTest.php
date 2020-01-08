@@ -7,9 +7,9 @@ namespace BluePsyduckTest\FactorioModPortalClient\Client;
 use BluePsyduck\FactorioModPortalClient\Client\ClientInterface;
 use BluePsyduck\FactorioModPortalClient\Client\Facade;
 use BluePsyduck\FactorioModPortalClient\Client\FacadeFactory;
-use Interop\Container\ContainerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 /**
  * The PHPUnit test of the FacadeFactory class.

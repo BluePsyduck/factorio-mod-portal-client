@@ -9,9 +9,9 @@ use BluePsyduck\FactorioModPortalClient\Endpoint\EndpointInterface;
 use BluePsyduck\FactorioModPortalClient\Service\EndpointService;
 use BluePsyduck\FactorioModPortalClient\Service\EndpointServiceFactory;
 use BluePsyduck\TestHelper\ReflectionTrait;
-use Interop\Container\ContainerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use ReflectionException;
 
 /**

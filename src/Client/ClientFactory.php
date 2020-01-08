@@ -6,8 +6,7 @@ namespace BluePsyduck\FactorioModPortalClient\Client;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ServiceName;
 use BluePsyduck\FactorioModPortalClient\Service\EndpointService;
-use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * The factory for the client.
@@ -15,7 +14,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  */
-class ClientFactory implements FactoryInterface
+class ClientFactory
 {
     /**
      * Creates the client.

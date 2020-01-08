@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace BluePsyduckTestAsset\FactorioModPortalClient;
 
 use BluePsyduck\FactorioModPortalClient\Serializer\SerializerFactory;
-use Interop\Container\ContainerInterface;
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 /**
  * The test case for testing serializing of data.

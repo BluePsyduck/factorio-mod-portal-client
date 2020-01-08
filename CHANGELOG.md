@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Removed
+
+- Dependency to zendframework/zend-servicemanager to avoid naming conflict with the rename of Zend to Laminas.
+
 ## 1.1.0 - 2019-09-19
 
 ### Changed

@@ -7,11 +7,10 @@ namespace BluePsyduck\FactorioModPortalClient\Serializer;
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
 use BluePsyduck\FactorioModPortalClient\Serializer\Construction\ObjectConstructor;
 use BluePsyduck\FactorioModPortalClient\Serializer\Handler\SimpleDateTimeHandler;
-use Interop\Container\ContainerInterface;
 use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * The factory for the JMS serializer.
@@ -19,7 +18,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  */
-class SerializerFactory implements FactoryInterface
+class SerializerFactory
 {
     /**
      * Creates the serializer.

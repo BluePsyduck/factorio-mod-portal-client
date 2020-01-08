@@ -7,9 +7,9 @@ namespace BluePsyduckTest\FactorioModPortalClient\Client;
 use BluePsyduck\FactorioModPortalClient\Client\Options;
 use BluePsyduck\FactorioModPortalClient\Client\OptionsFactory;
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
-use Interop\Container\ContainerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 
 /**
  * The PHPUnit test of the OptionsFactory class.

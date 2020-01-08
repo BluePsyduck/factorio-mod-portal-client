@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace BluePsyduck\FactorioModPortalClient;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ServiceName;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'dependencies' => [
@@ -21,14 +20,15 @@ return [
             Client\ClientInterface::class => Client\ClientFactory::class,
             Client\Facade::class => Client\FacadeFactory::class,
 
-            Endpoint\FullModEndpoint::class => InvokableFactory::class,
-            Endpoint\ModListEndpoint::class => InvokableFactory::class,
-            Endpoint\ModEndpoint::class => InvokableFactory::class,
-
             Service\EndpointService::class => Service\EndpointServiceFactory::class,
 
             // 3rd party dependencies
             ServiceName::SERIALIZER => Serializer\SerializerFactory::class,
+        ],
+        'invokables' => [
+            Endpoint\FullModEndpoint::class => Endpoint\FullModEndpoint::class,
+            Endpoint\ModListEndpoint::class => Endpoint\ModListEndpoint::class,
+            Endpoint\ModEndpoint::class => Endpoint\ModEndpoint::class,
         ],
     ],
 ];

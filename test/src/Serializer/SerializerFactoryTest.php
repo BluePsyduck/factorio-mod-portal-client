@@ -9,12 +9,12 @@ use BluePsyduck\FactorioModPortalClient\Serializer\Construction\ObjectConstructo
 use BluePsyduck\FactorioModPortalClient\Serializer\Handler\SimpleDateTimeHandler;
 use BluePsyduck\FactorioModPortalClient\Serializer\SerializerFactory;
 use BluePsyduck\TestHelper\ReflectionTrait;
-use Interop\Container\ContainerInterface;
 use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use ReflectionException;
 
 /**
