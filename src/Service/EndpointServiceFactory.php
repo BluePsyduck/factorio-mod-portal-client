@@ -20,7 +20,7 @@ class EndpointServiceFactory
      * Creates the service.
      * @param  ContainerInterface $container
      * @param  string $requestedName
-     * @param  null|array $options
+     * @param  array<mixed>|null $options
      * @return EndpointService
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): EndpointService

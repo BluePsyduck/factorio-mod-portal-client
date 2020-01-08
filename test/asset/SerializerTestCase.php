@@ -20,7 +20,7 @@ class SerializerTestCase extends TestCase
 {
     /**
      * Asserts that deserializing the data to the object actually equals the object.
-     * @param array $serializedData
+     * @param array<mixed> $serializedData
      * @param object $expectedObject
      */
     protected function assertDeserializedObject(array $serializedData, object $expectedObject): void

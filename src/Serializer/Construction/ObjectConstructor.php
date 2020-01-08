@@ -22,7 +22,7 @@ class ObjectConstructor implements ObjectConstructorInterface
      * @param DeserializationVisitorInterface $visitor
      * @param ClassMetadata $metadata
      * @param mixed $data
-     * @param array $type
+     * @param array<mixed> $type
      * @param DeserializationContext $context
      * @return object|null
      */

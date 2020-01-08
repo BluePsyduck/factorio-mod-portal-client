@@ -20,7 +20,7 @@ class ClientFactory
      * Creates the client.
      * @param  ContainerInterface $container
      * @param  string $requestedName
-     * @param  null|array $options
+     * @param  array<mixed>|null $options
      * @return Client
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Client

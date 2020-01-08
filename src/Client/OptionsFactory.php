@@ -19,7 +19,7 @@ class OptionsFactory
      * Creates the options.
      * @param  ContainerInterface $container
      * @param  string $requestedName
-     * @param  null|array $options
+     * @param  array<mixed>|null $options
      * @return Options
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Options
