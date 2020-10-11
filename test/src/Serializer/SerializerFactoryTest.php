@@ -6,7 +6,9 @@ namespace BluePsyduckTest\FactorioModPortalClient\Serializer;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
 use BluePsyduck\FactorioModPortalClient\Serializer\Construction\ObjectConstructor;
+use BluePsyduck\FactorioModPortalClient\Serializer\Handler\DependencyHandler;
 use BluePsyduck\FactorioModPortalClient\Serializer\Handler\SimpleDateTimeHandler;
+use BluePsyduck\FactorioModPortalClient\Serializer\Handler\VersionHandler;
 use BluePsyduck\FactorioModPortalClient\Serializer\SerializerFactory;
 use BluePsyduck\TestHelper\ReflectionTrait;
 use JMS\Serializer\Handler\HandlerRegistry;
@@ -42,7 +44,9 @@ class SerializerFactoryTest extends TestCase
             )
             ->addDefaultHandlers()
             ->configureHandlers(function (HandlerRegistry $registry): void {
+                $registry->registerSubscribingHandler(new DependencyHandler());
                 $registry->registerSubscribingHandler(new SimpleDateTimeHandler());
+                $registry->registerSubscribingHandler(new VersionHandler());
             })
             ->setObjectConstructor(new ObjectConstructor());
 

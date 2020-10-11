@@ -14,19 +14,27 @@ class InfoJson
 {
     /**
      * The dependencies of the release.
-     * @var array|string[]
+     * @var array|Dependency[]
      */
     protected $dependencies = [];
 
     /**
      * The version of Factorio the release requires.
-     * @var string
+     * @var Version
      */
-    protected $factorioVersion = '';
+    protected $factorioVersion;
+
+    /**
+     * Initializes the entity.
+     */
+    public function __construct()
+    {
+        $this->factorioVersion = new Version();
+    }
 
     /**
      * Sets the dependencies of the release.
-     * @param array|string[] $dependencies
+     * @param array|Dependency[] $dependencies
      * @return $this
      */
     public function setDependencies(array $dependencies): self
@@ -37,7 +45,7 @@ class InfoJson
 
     /**
      * Returns the dependencies of the release.
-     * @return array|string[]
+     * @return array|Dependency[]
      */
     public function getDependencies(): array
     {
@@ -46,10 +54,10 @@ class InfoJson
 
     /**
      * Sets the version of Factorio the release requires.
-     * @param string $factorioVersion
+     * @param Version $factorioVersion
      * @return $this
      */
-    public function setFactorioVersion(string $factorioVersion): self
+    public function setFactorioVersion(Version $factorioVersion): self
     {
         $this->factorioVersion = $factorioVersion;
         return $this;
@@ -57,9 +65,9 @@ class InfoJson
 
     /**
      * Returns the version of Factorio the release requires.
-     * @return string
+     * @return Version
      */
-    public function getFactorioVersion(): string
+    public function getFactorioVersion(): Version
     {
         return $this->factorioVersion;
     }

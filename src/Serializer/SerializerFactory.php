@@ -6,7 +6,9 @@ namespace BluePsyduck\FactorioModPortalClient\Serializer;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
 use BluePsyduck\FactorioModPortalClient\Serializer\Construction\ObjectConstructor;
+use BluePsyduck\FactorioModPortalClient\Serializer\Handler\DependencyHandler;
 use BluePsyduck\FactorioModPortalClient\Serializer\Handler\SimpleDateTimeHandler;
+use BluePsyduck\FactorioModPortalClient\Serializer\Handler\VersionHandler;
 use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -37,7 +39,9 @@ class SerializerFactory
             )
             ->addDefaultHandlers()
             ->configureHandlers(function (HandlerRegistry $registry): void {
+                $registry->registerSubscribingHandler(new DependencyHandler());
                 $registry->registerSubscribingHandler(new SimpleDateTimeHandler());
+                $registry->registerSubscribingHandler(new VersionHandler());
             })
             ->setObjectConstructor(new ObjectConstructor());
 

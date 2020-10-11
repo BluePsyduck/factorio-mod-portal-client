@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace BluePsyduckTestSerializer\FactorioModPortalClient\Entity;
 
+use BluePsyduck\FactorioModPortalClient\Entity\Dependency;
 use BluePsyduck\FactorioModPortalClient\Entity\InfoJson;
+use BluePsyduck\FactorioModPortalClient\Entity\Version;
 use BluePsyduckTestAsset\FactorioModPortalClient\SerializerTestCase;
 
 /**
@@ -30,8 +32,8 @@ class InfoJsonTest extends SerializerTestCase
         ];
 
         $expectedObject = new InfoJson();
-        $expectedObject->setDependencies(['abc', 'def'])
-                       ->setFactorioVersion('1.2.3');
+        $expectedObject->setDependencies([new Dependency('abc'), new Dependency('def')])
+                       ->setFactorioVersion(new Version('1.2.3'));
 
         $this->assertDeserializedObject($data, $expectedObject);
     }

@@ -6,6 +6,7 @@ namespace BluePsyduckTest\FactorioModPortalClient\Entity;
 
 use BluePsyduck\FactorioModPortalClient\Entity\InfoJson;
 use BluePsyduck\FactorioModPortalClient\Entity\Release;
+use BluePsyduck\FactorioModPortalClient\Entity\Version;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
@@ -28,12 +29,12 @@ class ReleaseTest extends TestCase
 
         $this->assertSame('', $entity->getDownloadUrl());
         $this->assertSame('', $entity->getFileName());
-        $this->assertSame('', $entity->getVersion());
         $this->assertSame('', $entity->getSha1());
 
         // Asserted through type-hinting
         $entity->getInfoJson();
         $entity->getReleasedAt();
+        $entity->getVersion();
     }
 
     /**
@@ -99,7 +100,7 @@ class ReleaseTest extends TestCase
      */
     public function testSetAndGetVersion(): void
     {
-        $version = '1.2.3';
+        $version = new Version('1.2.3');
         $entity = new Release();
 
         $this->assertSame($entity, $entity->setVersion($version));

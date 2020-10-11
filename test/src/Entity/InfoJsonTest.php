@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace BluePsyduckTest\FactorioModPortalClient\Entity;
 
+use BluePsyduck\FactorioModPortalClient\Entity\Dependency;
 use BluePsyduck\FactorioModPortalClient\Entity\InfoJson;
+use BluePsyduck\FactorioModPortalClient\Entity\Version;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,14 +20,16 @@ class InfoJsonTest extends TestCase
 {
     /**
      * Tests the constructing.
-     * @coversNothing
+     * @covers ::__construct
      */
     public function testConstruct(): void
     {
         $entity = new InfoJson();
 
         $this->assertSame([], $entity->getDependencies());
-        $this->assertSame('', $entity->getFactorioVersion());
+
+        // Asserted through type-hint
+        $entity->getFactorioVersion();
     }
 
     /**
@@ -35,7 +39,7 @@ class InfoJsonTest extends TestCase
      */
     public function testSetAndGetDependencies(): void
     {
-        $dependencies = ['abc', 'def'];
+        $dependencies = [$this->createMock(Dependency::class), $this->createMock(Dependency::class)];
         $entity = new InfoJson();
 
         $this->assertSame($entity, $entity->setDependencies($dependencies));
@@ -49,7 +53,7 @@ class InfoJsonTest extends TestCase
      */
     public function testSetAndGetFactorioVersion(): void
     {
-        $factorioVersion = '0.1.2';
+        $factorioVersion = new Version('0.1.2');
         $entity = new InfoJson();
 
         $this->assertSame($entity, $entity->setFactorioVersion($factorioVersion));
