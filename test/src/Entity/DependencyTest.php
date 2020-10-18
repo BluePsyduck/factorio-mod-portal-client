@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BluePsyduckTest\FactorioModPortalClient\Entity;
 
+use BluePsyduck\FactorioModPortalClient\Constant\DependencyOperator;
+use BluePsyduck\FactorioModPortalClient\Constant\DependencyType;
 use BluePsyduck\FactorioModPortalClient\Entity\Dependency;
 use BluePsyduck\FactorioModPortalClient\Entity\Version;
 use BluePsyduck\TestHelper\ReflectionTrait;
@@ -27,46 +29,48 @@ class DependencyTest extends TestCase
      */
     public function provideConstruct(): array
     {
+        // phpcs:disable Generic.Files.LineLength
         return [
-            ['abc', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_ANY, null],
-            ['abc = 1.0', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_EQ, new Version('1.0.0')],
-            ['abc > 1.0', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['abc >= 1.0', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_GTE, new Version('1.0.0')],
-            ['abc < 1.0', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_LT, new Version('1.0.0')],
-            ['abc <= 1.0', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_LTE, new Version('1.0.0')],
+            ['abc', DependencyType::MANDATORY, 'abc', DependencyOperator::ANY, null],
+            ['abc = 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::EQUAL, new Version('1.0.0')],
+            ['abc > 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['abc >= 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
+            ['abc < 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
+            ['abc <= 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
 
-            ['? abc', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_ANY, null],
-            ['? abc = 1.0', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_EQ, new Version('1.0.0')],
-            ['? abc > 1.0', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['? abc >= 1.0', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_GTE, new Version('1.0.0')],
-            ['? abc < 1.0', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_LT, new Version('1.0.0')],
-            ['? abc <= 1.0', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_LTE, new Version('1.0.0')],
+            ['? abc', DependencyType::OPTIONAL, 'abc', DependencyOperator::ANY, null],
+            ['? abc = 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::EQUAL, new Version('1.0.0')],
+            ['? abc > 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['? abc >= 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
+            ['? abc < 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
+            ['? abc <= 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
 
-            ['(?) abc', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_ANY, null],
-            ['(?) abc = 1.0', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_EQ, new Version('1.0.0')],
-            ['(?) abc > 1.0', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['(?) abc >= 1.0', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_GTE, new Version('1.0.0')],
-            ['(?) abc < 1.0', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_LT, new Version('1.0.0')],
-            ['(?) abc <= 1.0', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_LTE, new Version('1.0.0')],
+            ['(?) abc', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::ANY, null],
+            ['(?) abc = 1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::EQUAL, new Version('1.0.0')],
+            ['(?) abc > 1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['(?) abc >= 1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
+            ['(?) abc < 1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
+            ['(?) abc <= 1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
 
-            ['! abc', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_ANY, null],
-            ['! abc = 1.0', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_EQ, new Version('1.0.0')],
-            ['! abc > 1.0', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['! abc >= 1.0', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_GTE, new Version('1.0.0')],
-            ['! abc < 1.0', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_LT, new Version('1.0.0')],
-            ['! abc <= 1.0', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_LTE, new Version('1.0.0')],
+            ['! abc', DependencyType::CONFLICT, 'abc', DependencyOperator::ANY, null],
+            ['! abc = 1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::EQUAL, new Version('1.0.0')],
+            ['! abc > 1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['! abc >= 1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
+            ['! abc < 1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
+            ['! abc <= 1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
 
             // Optional spaces
-            ['abc>1.0', Dependency::TYPE_MANDATORY, 'abc', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['?abc>=1.0', Dependency::TYPE_OPTIONAL, 'abc', Dependency::OPERATOR_GTE, new Version('1.0.0')],
-            ['(?)abc<1.0', Dependency::TYPE_OPTIONAL_HIDDEN, 'abc', Dependency::OPERATOR_LT, new Version('1.0.0')],
-            ['!abc<=1.0', Dependency::TYPE_INCOMPATIBLE, 'abc', Dependency::OPERATOR_LTE, new Version('1.0.0')],
+            ['abc>1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['?abc>=1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
+            ['(?)abc<1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
+            ['!abc<=1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
 
             // More complex mod names
-            ['abc-def > 1.0.0', Dependency::TYPE_MANDATORY, 'abc-def', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['abc_def > 1.0.0', Dependency::TYPE_MANDATORY, 'abc_def', Dependency::OPERATOR_GT, new Version('1.0.0')],
-            ['Abc Def > 1.0.0', Dependency::TYPE_MANDATORY, 'Abc Def', Dependency::OPERATOR_GT, new Version('1.0.0')],
+            ['abc-def > 1.0.0', DependencyType::MANDATORY, 'abc-def', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['abc_def > 1.0.0', DependencyType::MANDATORY, 'abc_def', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['Abc Def > 1.0.0', DependencyType::MANDATORY, 'Abc Def', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
         ];
+        // phpcs:enable Generic.Files.LineLength
     }
 
     /**
@@ -178,5 +182,42 @@ class DependencyTest extends TestCase
         $result = $entity->isMatchedByVersion(new Version('4.5.6'));
 
         $this->assertTrue($result);
+    }
+
+    /**
+     * Provides the data for the __toString test.
+     * @return array<mixed>
+     */
+    public function provideToString(): array
+    {
+        return [
+            ['abc', 'abc'],
+            ['? abc = 1.0', '? abc = 1.0.0'],
+            ['(?) abc > 1.0', '(?) abc > 1.0.0'],
+            ['! abc >= 1.0', '! abc >= 1.0.0'],
+            ['? abc < 1.0', '? abc < 1.0.0'],
+            ['! abc <= 1.0', '! abc <= 1.0.0'],
+
+            // Optional spaces will be added
+            ['abc>1.0', 'abc > 1.0.0'],
+            ['?abc>=1.0', '? abc >= 1.0.0'],
+            ['(?)abc<1.0', '(?) abc < 1.0.0'],
+            ['!abc<=1.0', '! abc <= 1.0.0'],
+        ];
+    }
+
+    /**
+     * Tests the __toString method.
+     * @param string $dependencyString
+     * @param string $expectedResult
+     * @covers ::__toString
+     * @dataProvider provideToString
+     */
+    public function testToString(string $dependencyString, string $expectedResult): void
+    {
+        $dependency = new Dependency($dependencyString);
+        $result = (string) $dependency;
+
+        $this->assertSame($expectedResult, $result);
     }
 }

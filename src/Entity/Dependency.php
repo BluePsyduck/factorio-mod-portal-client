@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace BluePsyduck\FactorioModPortalClient\Entity;
 
+use BluePsyduck\FactorioModPortalClient\Constant\DependencyOperator;
+use BluePsyduck\FactorioModPortalClient\Constant\DependencyType;
+
 /**
  * The class representing a (parsed) dependency of a mod release.
  *
@@ -12,25 +15,16 @@ namespace BluePsyduck\FactorioModPortalClient\Entity;
  */
 class Dependency
 {
-    public const TYPE_MANDATORY = '';
-    public const TYPE_OPTIONAL  = '?';
-    public const TYPE_OPTIONAL_HIDDEN = '(?)';
-    public const TYPE_INCOMPATIBLE = '!';
-
-    public const OPERATOR_ANY = '';
-    public const OPERATOR_EQ = '=';
-    public const OPERATOR_GT = '>';
-    public const OPERATOR_GTE = '>=';
-    public const OPERATOR_LT = '<';
-    public const OPERATOR_LTE = '<=';
-
+    /**
+     * The regular expression to parse the dependency string.
+     */
     private const REGEX_DEPENDENCY = '#^(\?|!|\(\?\))?[ ]*(.+?)[ ]*(?:(<|<=|=|>=|>)[ ]*([\d.]+))?$#';
 
     /**
      * The type of the dependency.
      * @var string
      */
-    protected $type = self::TYPE_MANDATORY;
+    protected $type = DependencyType::MANDATORY;
 
     /**
      * The mod to which the dependency exists.
@@ -42,7 +36,7 @@ class Dependency
      * The operator used for the version.
      * @var string
      */
-    protected $operator = self::OPERATOR_ANY;
+    protected $operator = DependencyOperator::ANY;
 
     /**
      * The version to which the dependency exists.
@@ -57,9 +51,9 @@ class Dependency
     public function __construct(string $dependencyString)
     {
         if (preg_match(self::REGEX_DEPENDENCY, $dependencyString, $match) === 1) {
-            $this->type = $match[1] ?? self::TYPE_MANDATORY;
+            $this->type = $match[1] ?? DependencyType::MANDATORY;
             $this->mod = $match[2] ?? '';
-            $this->operator = $match[3] ?? self::OPERATOR_ANY;
+            $this->operator = $match[3] ?? DependencyOperator::ANY;
 
             if (isset($match[4]) && $match[4] !== '') {
                 $this->version = new Version($match[4]);
@@ -116,23 +110,37 @@ class Dependency
         }
 
         switch ($this->operator) {
-            case self::OPERATOR_GT:
+            case DependencyOperator::GREATER_THAN:
                 return $version->compareTo($this->version) > 0;
 
-            case self::OPERATOR_GTE:
+            case DependencyOperator::GREATER_THAN_EQUAL:
                 return $version->compareTo($this->version) >= 0;
 
-            case self::OPERATOR_EQ:
+            case DependencyOperator::EQUAL:
                 return $version->compareTo($this->version) === 0;
 
-            case self::OPERATOR_LTE:
+            case DependencyOperator::LESS_THAN_EQUAL:
                 return $version->compareTo($this->version) <= 0;
 
-            case self::OPERATOR_LT:
+            case DependencyOperator::LESS_THAN:
                 return $version->compareTo($this->version) < 0;
 
             default:
                 return true;
         }
+    }
+
+
+    /**
+     * Returns the string representation of the dependency.
+     * @return string
+     */
+    public function __toString(): string
+    {
+        $result = trim("{$this->type} {$this->mod}");
+        if ($this->operator !== DependencyOperator::ANY && $this->version !== null) {
+            $result .= " {$this->operator} {$this->version}";
+        }
+        return $result;
     }
 }
