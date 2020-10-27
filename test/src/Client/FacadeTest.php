@@ -160,10 +160,10 @@ class FacadeTest extends TestCase
 
         $facade = new Facade($this->client);
         $result = $facade->getDownloadUrl($downloadPath);
-        
+
         $this->assertSame($downloadUrl, $result);
     }
-    
+
     /**
      * Tests the getAssetUrl method.
      * @covers ::getAssetUrl
@@ -180,7 +180,7 @@ class FacadeTest extends TestCase
 
         $facade = new Facade($this->client);
         $result = $facade->getAssetUrl($assetPath);
-        
+
         $this->assertSame($assetUrl, $result);
     }
 }

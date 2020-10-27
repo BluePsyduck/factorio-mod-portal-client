@@ -276,7 +276,7 @@ class ClientTest extends TestCase
                               ->method('getEndpointForRequest')
                               ->with($this->identicalTo($request))
                               ->willReturn($endpoint);
-        
+
         $this->serializer->expects($this->once())
                          ->method('deserialize')
                          ->with(
@@ -632,7 +632,7 @@ class ClientTest extends TestCase
 
         $this->assertSame($expectedResult, $result);
     }
-    
+
     /**
      * Tests the getDownloadUrl method.
      * @covers ::getDownloadUrl
@@ -658,7 +658,7 @@ class ClientTest extends TestCase
 
         $this->assertSame($expectedResult, $result);
     }
-    
+
     /**
      * Tests the getAssetUrl method.
      * @covers ::getAssetUrl
