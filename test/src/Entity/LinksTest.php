@@ -23,13 +23,13 @@ class LinksTest extends TestCase
     public function testConstruct(): void
     {
         $entity = new Links();
-        
+
         $this->assertNull($entity->getFirst());
         $this->assertNull($entity->getPrev());
         $this->assertNull($entity->getNext());
         $this->assertNull($entity->getLast());
     }
-    
+
     /**
      * Tests the setting and getting the first.
      * @covers ::getFirst
@@ -39,7 +39,7 @@ class LinksTest extends TestCase
     {
         $first = 'abc';
         $entity = new Links();
-    
+
         $this->assertSame($entity, $entity->setFirst($first));
         $this->assertSame($first, $entity->getFirst());
     }
