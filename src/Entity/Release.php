@@ -41,9 +41,9 @@ class Release
 
     /**
      * The version of the release.
-     * @var string
+     * @var Version
      */
-    protected $version = '';
+    protected $version;
 
     /**
      * The sha1 hash of the release file.
@@ -58,6 +58,7 @@ class Release
     {
         $this->releasedAt = new DateTimeImmutable();
         $this->infoJson = new InfoJson();
+        $this->version = new Version();
     }
 
     /**
@@ -142,10 +143,10 @@ class Release
 
     /**
      * Sets the version of the release.
-     * @param string $version
+     * @param Version $version
      * @return $this
      */
-    public function setVersion(string $version): self
+    public function setVersion(Version $version): self
     {
         $this->version = $version;
         return $this;
@@ -153,9 +154,9 @@ class Release
 
     /**
      * Returns the version of the release.
-     * @return string
+     * @return Version
      */
-    public function getVersion(): string
+    public function getVersion(): Version
     {
         return $this->version;
     }

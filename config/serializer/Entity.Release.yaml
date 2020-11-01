@@ -15,7 +15,7 @@ BluePsyduck\FactorioModPortalClient\Entity\Release:
       type: simpleDateTime
       serialized_name: released_at
     version:
-      type: string
+      type: version
       serialized_name: version
     sha1:
       type: string

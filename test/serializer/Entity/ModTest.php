@@ -7,6 +7,7 @@ namespace BluePsyduckTestSerializer\FactorioModPortalClient\Entity;
 use BluePsyduck\FactorioModPortalClient\Entity\License;
 use BluePsyduck\FactorioModPortalClient\Entity\Mod;
 use BluePsyduck\FactorioModPortalClient\Entity\Release;
+use BluePsyduck\FactorioModPortalClient\Entity\Version;
 use BluePsyduckTestAsset\FactorioModPortalClient\SerializerTestCase;
 use DateTimeImmutable;
 
@@ -59,13 +60,13 @@ class ModTest extends SerializerTestCase
         ];
 
         $release1 = new Release();
-        $release1->setVersion('1.2.3')
+        $release1->setVersion(new Version('1.2.3'))
                  ->setReleasedAt(new DateTimeImmutable('2039-01-16T03:14:07.123456Z'));
         $release2 = new Release();
-        $release2->setVersion('0.1.2')
+        $release2->setVersion(new Version('0.1.2'))
                  ->setReleasedAt(new DateTimeImmutable('2039-01-17T03:14:07.123456Z'));
         $release3 = new Release();
-        $release3->setVersion('1.2.3')
+        $release3->setVersion(new Version('1.2.3'))
                  ->setReleasedAt(new DateTimeImmutable('2039-01-18T03:14:07.123456Z'));
         $license = new License();
         $license->setName('pqr');
@@ -128,10 +129,10 @@ class ModTest extends SerializerTestCase
         ];
 
         $release2 = new Release();
-        $release2->setVersion('0.1.2')
+        $release2->setVersion(new Version('0.1.2'))
                  ->setReleasedAt(new DateTimeImmutable('2039-01-17T03:14:07.123456Z'));
         $release3 = new Release();
-        $release3->setVersion('1.2.3')
+        $release3->setVersion(new Version('1.2.3'))
                  ->setReleasedAt(new DateTimeImmutable('2039-01-18T03:14:07.123456Z'));
         $license = new License();
         $license->setName('pqr');

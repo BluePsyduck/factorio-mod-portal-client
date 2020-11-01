@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 - 2020-11-01
+
+### Added
+
+- Classes `Version` and `Dependency` actually parsing the values returned from the API for further processing.
+- Class `ModUtils` helping with common tasks related to mods.
+
 ## 1.2.0 - 2020-01-08
 
 ### Removed

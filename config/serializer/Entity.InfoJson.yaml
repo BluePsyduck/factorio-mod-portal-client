@@ -3,8 +3,8 @@ BluePsyduck\FactorioModPortalClient\Entity\InfoJson:
   exclusion_policy: all
   properties:
     dependencies:
-      type: array<string>
+      type: array<dependency>
       serialized_name: dependencies
     factorioVersion:
-      type: string
+      type: version
       serialized_name: factorio_version

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BluePsyduckTestSerializer\FactorioModPortalClient\Entity;
 
 use BluePsyduck\FactorioModPortalClient\Entity\Release;
+use BluePsyduck\FactorioModPortalClient\Entity\Version;
 use BluePsyduckTestAsset\FactorioModPortalClient\SerializerTestCase;
 use DateTimeImmutable;
 
@@ -37,9 +38,9 @@ class ReleaseTest extends SerializerTestCase
         $expectedObject->setDownloadUrl('abc/def')
                        ->setFileName('ghi_1.2.3.zip')
                        ->setReleasedAt(new DateTimeImmutable('2038-01-19T03:14:07.123456Z'))
-                       ->setVersion('1.2.3')
+                       ->setVersion(new Version('1.2.3'))
                        ->setSha1('jkl');
-        $expectedObject->getInfoJson()->setFactorioVersion('0.1.2');
+        $expectedObject->getInfoJson()->setFactorioVersion(new Version('0.1.2'));
 
         $this->assertDeserializedObject($data, $expectedObject);
     }
