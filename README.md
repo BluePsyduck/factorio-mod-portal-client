@@ -1,9 +1,9 @@
-# Factorio Mod Portal Client
+# Factorio Mod Portal Client Library
 
-[![Latest Stable Version](https://poser.pugx.org/bluepsyduck/factorio-mod-portal-client/v/stable)](https://packagist.org/packages/bluepsyduck/factorio-mod-portal-client) 
-[![License](https://poser.pugx.org/bluepsyduck/factorio-mod-portal-client/license)](https://packagist.org/packages/bluepsyduck/factorio-mod-portal-client) 
-[![Build Status](https://travis-ci.com/BluePsyduck/factorio-mod-portal-client.svg?branch=master)](https://travis-ci.com/BluePsyduck/factorio-mod-portal-client) 
-[![codecov](https://codecov.io/gh/BluePsyduck/factorio-mod-portal-client/branch/master/graph/badge.svg)](https://codecov.io/gh/BluePsyduck/factorio-mod-portal-client)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/BluePsyduck/factorio-mod-portal-client)](https://github.com/BluePsyduck/factorio-mod-portal-client/releases)
+[![GitHub](https://img.shields.io/github/license/BluePsyduck/factorio-mod-portal-client)](LICENSE.md)
+[![build](https://img.shields.io/github/workflow/status/BluePsyduck/factorio-mod-portal-client/CI?logo=github)](https://github.com/BluePsyduck/factorio-mod-portal-client/actions)
+[![Codecov](https://img.shields.io/codecov/c/gh/BluePsyduck/factorio-mod-portal-client?logo=codecov)](https://codecov.io/gh/BluePsyduck/factorio-mod-portal-client)
 
 This library implements a PHP client to access the API of the [Factorio Mod Portal](https://mods.factorio.com/).
 
