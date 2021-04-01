@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0 - 2021-04-01
+
+### Added
+
+- Support for new ~ dependency modifier as of [Factorio 1.1.28](https://forums.factorio.com/viewtopic.php?f=3&t=97273).
+
 ## 1.3.1 - 2021-02-18
 
 ### Added
