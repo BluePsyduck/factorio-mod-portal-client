@@ -18,7 +18,7 @@ class Dependency
     /**
      * The regular expression to parse the dependency string.
      */
-    private const REGEX_DEPENDENCY = '#^(\?|!|\(\?\))?[ ]*(.+?)[ ]*(?:(<|<=|=|>=|>)[ ]*([\d.]+))?$#';
+    private const REGEX_DEPENDENCY = '#^(~|\?|!|\(\?\))?[ ]*(.+?)[ ]*(?:(<|<=|=|>=|>)[ ]*([\d.]+))?$#';
 
     /**
      * The type of the dependency.

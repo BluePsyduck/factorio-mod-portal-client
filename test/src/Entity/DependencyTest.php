@@ -38,6 +38,14 @@ class DependencyTest extends TestCase
             ['abc < 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
             ['abc <= 1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
 
+            ['~ abc', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::ANY, null],
+            ['~ abc = 1.0', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::EQUAL, new Version('1.0.0')],
+            ['~ abc > 1.0', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['~ abc >= 1.0', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
+            ['~ abc < 1.0', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
+            ['~ abc <= 1.0', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
+
+
             ['? abc', DependencyType::OPTIONAL, 'abc', DependencyOperator::ANY, null],
             ['? abc = 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::EQUAL, new Version('1.0.0')],
             ['? abc > 1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
@@ -61,6 +69,7 @@ class DependencyTest extends TestCase
 
             // Optional spaces
             ['abc>1.0', DependencyType::MANDATORY, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
+            ['~abc>1.0', DependencyType::MANDATORY_CIRCULAR, 'abc', DependencyOperator::GREATER_THAN, new Version('1.0.0')],
             ['?abc>=1.0', DependencyType::OPTIONAL, 'abc', DependencyOperator::GREATER_THAN_EQUAL, new Version('1.0.0')],
             ['(?)abc<1.0', DependencyType::OPTIONAL_HIDDEN, 'abc', DependencyOperator::LESS_THAN, new Version('1.0.0')],
             ['!abc<=1.0', DependencyType::CONFLICT, 'abc', DependencyOperator::LESS_THAN_EQUAL, new Version('1.0.0')],
@@ -192,6 +201,7 @@ class DependencyTest extends TestCase
     {
         return [
             ['abc', 'abc'],
+            ['~ abc = 1.0', '~ abc = 1.0.0'],
             ['? abc = 1.0', '? abc = 1.0.0'],
             ['(?) abc > 1.0', '(?) abc > 1.0.0'],
             ['! abc >= 1.0', '! abc >= 1.0.0'],
@@ -200,6 +210,7 @@ class DependencyTest extends TestCase
 
             // Optional spaces will be added
             ['abc>1.0', 'abc > 1.0.0'],
+            ['~abc=1.0', '~ abc = 1.0.0'],
             ['?abc>=1.0', '? abc >= 1.0.0'],
             ['(?)abc<1.0', '(?) abc < 1.0.0'],
             ['!abc<=1.0', '! abc <= 1.0.0'],

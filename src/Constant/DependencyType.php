@@ -18,6 +18,11 @@ interface DependencyType
     public const MANDATORY = '';
 
     /**
+     * The dependency is mandatory, but does not change the load order to allow circular dependencies.
+     */
+    public const MANDATORY_CIRCULAR = '~';
+
+    /**
      * The dependency is optional.
      */
     public const OPTIONAL = '?';
