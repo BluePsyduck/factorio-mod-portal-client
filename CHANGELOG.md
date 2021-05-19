@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.1 - 2021-05-19
+
+### Added
+
+- Support for Guzzle client 7.x.
+
 ## 1.4.0 - 2021-04-01
 
 ### Added
