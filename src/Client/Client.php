@@ -16,6 +16,7 @@ use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
 use JMS\Serializer\SerializerInterface;
@@ -99,7 +100,7 @@ class Client implements ClientInterface
             function (PsrResponseInterface $clientResponse) use ($request, $clientRequest): ResponseInterface {
                 return $this->processResponse($request, $clientRequest, $clientResponse);
             },
-            function (RequestException $exception): void {
+            function (TransferException $exception): void {
                 $this->processException($exception);
             }
         );
@@ -148,10 +149,10 @@ class Client implements ClientInterface
 
     /**
      * Processes the exception thrown by the HTTP client.
-     * @param RequestException $exception
+     * @param TransferException $exception
      * @throws ClientException
      */
-    protected function processException(RequestException $exception): void
+    protected function processException(TransferException $exception): void
     {
         if ($exception instanceof ConnectException) {
             throw new ConnectionException(
@@ -159,7 +160,9 @@ class Client implements ClientInterface
                 $this->getContentsFromMessage($exception->getRequest()),
                 $exception
             );
-        } else {
+        }
+
+        if ($exception instanceof RequestException) {
             throw new ErrorResponseException(
                 $this->getErrorMessageFromException($exception),
                 $this->getStatusCodeFromException($exception),
@@ -168,6 +171,14 @@ class Client implements ClientInterface
                 $exception
             );
         }
+
+        throw new ErrorResponseException(
+            $exception->getMessage(),
+            $exception->getCode(),
+            '',
+            '',
+            $exception
+        );
     }
 
     /**

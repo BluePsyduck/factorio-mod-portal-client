@@ -20,6 +20,7 @@ use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
 use JMS\Serializer\SerializerInterface;
@@ -431,6 +432,26 @@ class ClientTest extends TestCase
                ->method('getContentsFromMessage')
                ->with($this->identicalTo($clientRequest))
                ->willReturn($requestContents);
+
+        $this->expectExceptionObject($expectedException);
+
+        $this->invokeMethod($client, 'processException', $exception);
+    }
+
+    /**
+     * Tests the processException method.
+     * @throws ReflectionException
+     * @covers ::processException
+     */
+    public function testProcessExceptionWithTransferException(): void
+    {
+        $code = 512;
+        $message = 'abc';
+
+        $exception = new TransferException($message, $code);
+        $expectedException = new ErrorResponseException($message, $code, '', '', $exception);
+
+        $client = $this->createMockedClient(['getContentsFromMessage']);
 
         $this->expectExceptionObject($expectedException);
 
