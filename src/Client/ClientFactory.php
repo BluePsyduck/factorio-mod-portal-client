@@ -6,6 +6,8 @@ namespace BluePsyduck\FactorioModPortalClient\Client;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ServiceName;
 use BluePsyduck\FactorioModPortalClient\Service\EndpointService;
+use JMS\Serializer\SerializerInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -22,13 +24,17 @@ class ClientFactory
      * @param  string $requestedName
      * @param  array<mixed>|null $options
      * @return Client
+     * @throws ContainerExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Client
     {
-        return new Client(
-            $container->get(EndpointService::class),
-            $container->get(Options::class),
-            $container->get(ServiceName::SERIALIZER)
-        );
+        /** @var EndpointService $endpointService */
+        $endpointService = $container->get(EndpointService::class);
+        /** @var Options $options */
+        $options = $container->get(Options::class);
+        /** @var SerializerInterface $serializer */
+        $serializer = $container->get(ServiceName::SERIALIZER);
+
+        return new Client($endpointService, $options, $serializer);
     }
 }

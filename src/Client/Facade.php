@@ -42,7 +42,7 @@ class Facade
      */
     public function getMod(ModRequest $request): ModResponse
     {
-        return $this->client->sendRequest($request)->wait();
+        return $this->client->sendRequest($request)->wait(); // @phpstan-ignore-line
     }
 
     /**
@@ -52,7 +52,7 @@ class Facade
      */
     public function getFullMod(FullModRequest $request): ModResponse
     {
-        return $this->client->sendRequest($request)->wait();
+        return $this->client->sendRequest($request)->wait(); // @phpstan-ignore-line
     }
 
     /**
@@ -63,7 +63,7 @@ class Facade
      */
     public function getModList(ModListRequest $request): ModListResponse
     {
-        return $this->client->sendRequest($request)->wait();
+        return $this->client->sendRequest($request)->wait(); // @phpstan-ignore-line
     }
 
     /**

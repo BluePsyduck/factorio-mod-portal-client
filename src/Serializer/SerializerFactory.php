@@ -12,6 +12,7 @@ use BluePsyduck\FactorioModPortalClient\Serializer\Handler\VersionHandler;
 use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -28,6 +29,7 @@ class SerializerFactory
      * @param string $requestedName
      * @param  array<mixed>|null $options
      * @return SerializerInterface
+     * @throws ContainerExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): SerializerInterface
     {
@@ -54,11 +56,12 @@ class SerializerFactory
      * Adds the cache directory from the config to the builder.
      * @param ContainerInterface $container
      * @param SerializerBuilder $builder
+     * @throws ContainerExceptionInterface
      */
     protected function addCacheDirectory(ContainerInterface $container, SerializerBuilder $builder): void
     {
         $config = $container->get('config');
-        $cacheDir = (string) ($config[ConfigKey::MAIN][ConfigKey::CACHE_DIR] ?? '');
+        $cacheDir = (string) ($config[ConfigKey::MAIN][ConfigKey::CACHE_DIR] ?? ''); // @phpstan-ignore-line
 
         if ($cacheDir !== '') {
             $builder->setCacheDir($cacheDir);

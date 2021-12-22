@@ -137,13 +137,15 @@ class ClientTest extends TestCase
                 ->method('getTimeout')
                 ->willReturn($timeout);
 
-        $client = new Client($this->endpointService, $this->options, $this->serializer);
+        $expectedResult = new GuzzleClient([
+            'base_uri' => $expectedApiUrl,
+            'timeout' => $timeout,
+        ]);
 
-        /* @var GuzzleClient $result */
+        $client = new Client($this->endpointService, $this->options, $this->serializer);
         $result = $this->invokeMethod($client, 'createGuzzleClient', $options);
 
-        $this->assertSame($expectedApiUrl, (string) $result->getConfig('base_uri'));
-        $this->assertSame($timeout, $result->getConfig('timeout'));
+        $this->assertEquals($expectedResult, $result);
     }
 
     /**

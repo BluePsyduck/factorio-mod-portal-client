@@ -32,7 +32,7 @@ class ModListEndpoint implements EndpointInterface
      */
     public function getRequestPath(RequestInterface $request): string
     {
-        /* @var ModListRequest $request */
+        /** @var ModListRequest $request */
 
         $params = [];
         if ($request->getPage() !== null) {

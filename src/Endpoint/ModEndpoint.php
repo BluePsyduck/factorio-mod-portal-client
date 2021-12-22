@@ -32,7 +32,7 @@ class ModEndpoint implements EndpointInterface
      */
     public function getRequestPath(RequestInterface $request): string
     {
-        /* @var ModRequest $request */
+        /** @var ModRequest $request */
         return sprintf('/mods/%s', $request->getName());
     }
 
