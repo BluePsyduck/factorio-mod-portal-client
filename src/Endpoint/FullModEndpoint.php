@@ -32,7 +32,7 @@ class FullModEndpoint implements EndpointInterface
      */
     public function getRequestPath(RequestInterface $request): string
     {
-        /* @var FullModRequest $request */
+        /** @var FullModRequest $request */
         return sprintf('/mods/%s/full', $request->getName());
     }
 

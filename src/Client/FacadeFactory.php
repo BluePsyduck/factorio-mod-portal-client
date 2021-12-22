@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BluePsyduck\FactorioModPortalClient\Client;
 
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -20,11 +21,13 @@ class FacadeFactory
      * @param  string $requestedName
      * @param  array<mixed>|null $options
      * @return Facade
+     * @throws ContainerExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Facade
     {
-        return new Facade(
-            $container->get(ClientInterface::class)
-        );
+        /** @var ClientInterface $client */
+        $client = $container->get(ClientInterface::class);
+
+        return new Facade($client);
     }
 }

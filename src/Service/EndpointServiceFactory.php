@@ -6,6 +6,7 @@ namespace BluePsyduck\FactorioModPortalClient\Service;
 
 use BluePsyduck\FactorioModPortalClient\Constant\ConfigKey;
 use BluePsyduck\FactorioModPortalClient\Endpoint\EndpointInterface;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -22,13 +23,16 @@ class EndpointServiceFactory
      * @param  string $requestedName
      * @param  array<mixed>|null $options
      * @return EndpointService
+     * @throws ContainerExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): EndpointService
     {
         $config = $container->get('config');
-        $libraryConfig = $config[ConfigKey::MAIN] ?? [];
+        $libraryConfig = $config[ConfigKey::MAIN] ?? []; // @phpstan-ignore-line
+        /** @var array<string> $endpointAliases */
+        $endpointAliases = $libraryConfig[ConfigKey::ENDPOINTS] ?? []; // @phpstan-ignore-line
 
-        return new EndpointService($this->createEndpoints($container, $libraryConfig[ConfigKey::ENDPOINTS] ?? []));
+        return new EndpointService($this->createEndpoints($container, $endpointAliases));
     }
 
     /**
@@ -36,12 +40,15 @@ class EndpointServiceFactory
      * @param ContainerInterface $container
      * @param array|string[] $aliases
      * @return array|EndpointInterface[]
+     * @throws ContainerExceptionInterface
      */
     protected function createEndpoints(ContainerInterface $container, array $aliases): array
     {
         $result = [];
         foreach ($aliases as $alias) {
-            $result[] = $container->get($alias);
+            /** @var EndpointInterface $endpoint */
+            $endpoint = $container->get($alias);
+            $result[] = $endpoint;
         }
         return $result;
     }

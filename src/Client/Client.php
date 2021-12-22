@@ -138,6 +138,7 @@ class Client implements ClientInterface
         $responseClass = $endpoint->getResponseClass();
 
         try {
+            /** @var ResponseInterface $result */
             $result = $this->serializer->deserialize($responseContents, $responseClass, 'json');
         } catch (Exception $e) {
             $requestContents = $this->getContentsFromMessage($clientRequest);
@@ -174,7 +175,7 @@ class Client implements ClientInterface
 
         throw new ErrorResponseException(
             $exception->getMessage(),
-            $exception->getCode(),
+            intval($exception->getCode()),
             '',
             '',
             $exception
@@ -207,7 +208,7 @@ class Client implements ClientInterface
         try {
             $responseContents = $this->getContentsFromMessage($exception->getResponse());
 
-            /* @var ErrorResponse $errorResponse */
+            /** @var ErrorResponse $errorResponse */
             $errorResponse = $this->serializer->deserialize($responseContents, ErrorResponse::class, 'json');
             $result = $errorResponse->getMessage();
         } catch (Exception $e) {

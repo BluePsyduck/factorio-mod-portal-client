@@ -7,7 +7,6 @@ parameters:
     - test/src
   ignoreErrors:
     - '#Dynamic call to static method PHPUnit\\Framework\\.*#'
-    - '#Call to an undefined method BluePsyduck\\FactorioModPortalClient\\Request\\RequestInterface::get.*\(\)\.#'
 
 includes:
   - vendor/phpstan/phpstan-phpunit/extension.neon
