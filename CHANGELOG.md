@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.2 - 2021-12-22
+
+### Added
+
+- Support for Symfony 6.x.
+
 ## 1.4.1 - 2021-05-19
 
 ### Added
